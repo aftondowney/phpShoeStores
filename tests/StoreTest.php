@@ -98,7 +98,7 @@
             $this->assertEquals([$test_store2], $result);
         }
 
-        function testfindStoreById()
+        function testFindStoreById()
         {
             //Arrange
             $name = "Shoe Emporium";
@@ -114,7 +114,7 @@
             $result = Store::findStoreById($test_store->getId());
 
             //Assert
-            $this->assertEquals([$test_store], $result);
+            $this->assertEquals($test_store, $result);
         }
 
     }

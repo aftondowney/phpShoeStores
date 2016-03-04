@@ -53,20 +53,20 @@
         {
             $GLOBALS['DB']->exec("DELETE FROM stores WHERE id = {$this->getId()};");
         }
-        
-        //  static function findStore($search_id)
-        // {
-        //     $found_store = null;
-        //     $stores = Store::getAll();
-        //     foreach($stores as $store) {
-        //         $store_id = $store->getId();
-        //         if ($store_id == $search_id) {
-        //             $found_store = $store;
-        //         }
-        //     }
-        //     return $found_store;
-        // }
-        //
+
+         static function findStoreById($search_id)
+        {
+            $found_store = null;
+            $stores = Store::getAll();
+            foreach($stores as $store) {
+                $store_id = $store->getId();
+                if ($store_id == $search_id) {
+                    $found_store = $store;
+                }
+            }
+            return $found_store;
+        }
+
         // function updateStore($new_name)
         // {
         //     $GLOBALS['DB']->exec("UPDATE stores SET name = '{$new_name}' WHERE id = {$this->getId()};");
