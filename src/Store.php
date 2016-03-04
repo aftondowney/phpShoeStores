@@ -73,27 +73,27 @@
             $this->setName($new_name);
         }
 
-        // function addBook($book)
-        // {
-        //     $GLOBALS['DB']->exec("INSERT INTO stores_books (store_id, book_id) VALUES ({$this->getId()}, {$book->getId()});");
-        // }
-        //
-        // function getBook()
-        // {
-        //     $books = $GLOBALS['DB']->query("SELECT books.* FROM stores
-        //       JOIN stores_books ON (stores.id = stores_books.store_id)
-        //       JOIN books ON (books.id = stores_books.book_id)
-        //       WHERE stores.id = {$this->getId()};");
-        //
-        //     $returned_books = [];
-        //     foreach($books as $book) {
-        //         $title = $book['title'];
-        //         $id = $book['id'];
-        //         $new_book = new Book($title, $id);
-        //         array_push($returned_books, $new_book);
-        //     }
-        //     return $returned_books;
-        // }
+        function addBrand($brand)
+        {
+            $GLOBALS['DB']->exec("INSERT INTO stores_brands (store_id, brand_id) VALUES ({$this->getId()}, {$brand->getId()});");
+        }
+
+        function getBrands()
+        {
+            $brands = $GLOBALS['DB']->query("SELECT brands.* FROM stores
+              JOIN stores_brands ON (stores.id = stores_brands.store_id)
+              JOIN brands ON (brands.id = stores_brands.brand_id)
+              WHERE stores.id = {$this->getId()};");
+
+            $returned_brands = [];
+            foreach($brands as $brand) {
+                $name = $brand['name'];
+                $id = $brand['id'];
+                $new_brand = new Brand($name, $id);
+                array_push($returned_brands, $new_brand);
+            }
+            return $returned_brands;
+        }
 
 
 
