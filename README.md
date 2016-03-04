@@ -1,37 +1,40 @@
-# _{Application Name}_
+# _Shoe Stores_
 
-#### _{Brief description of application}, {Date of current version}_
+#### _This will allow a user to create a store and add brands to that store. They will also be able to add stores to a particular brand, 03/04/2016_
 
-#### By _**{List of contributors}**_
+#### By _**Afton Downey**_
 
 ## Description
 
-_{This is a detailed description of your application. Its purpose and usage.  Give as much detail as needed to explain what the application does, and any other information you want users or other developers to have. }_
+_This app was built with PHP using Silex and Twig templates. The purpose of this app is for a user to be able to add stores to a shoe database. Brands can be listed under individual stores. Stores can also be listed under specific brands._
 
 ## Setup/Installation Requirements
 
-* _This is a great place_
-* _to list setup instructions_
-* _in a simple_
-* _easy-to-understand_
-* _format_
+* _Fork or clone from GitHub_
+* _Please create a separate branch if you cloned_
+* _Open the folder in a text editor like Atom to view the code_
+* _In your terminal for the site to work, use the command "composer update"_
+* _To see the page displayed on the front end, within the terminal navigate to the web folder to initialize a local server_
+* _Type in the command "php -S localhost:8000" to start the server_
+* _Use localhost:8000 in your web browser to view the page_
+* MySQL Commands
+1. create database shoes;
+2. use shoes;
+3. create table brands (name text, id serial primary key);
+4. create table stores (name text, id serial primary key);
+5. create table stores_brands (store_id int, brand_id int, id serial primary key);
 
-_{Leave nothing to chance! You want it to be easy for potential users, employers and collaborators to run your app. Do I need to run a server? How should I set up my databases? Is there other code this app depends on?}_
 
 ## Known Bugs
 
-_{Are there issues that have not yet been resolved that you want to let users know you know?  Outline any issues that would impact use of your application.  Share any workarounds that are in place. }_
-
-## Support and contact details
-
-_{Let people know what to do if they run into any issues or have questions, ideas or concerns.  Encourage them to contact you or make a contribution to the code.}_
+_As of 3/4/16 there are no known bugs._
 
 ## Technologies Used
 
-_{Tell me about the languages and tools you used to create this app. Assume that I know you probably used HTML and CSS. If you did something really cool using only HTML, point that out.}_
+_This app was built in PHP using HTML alongside Silex and Twig. I used PHPUnit for testing and created the database using MySQL. PHPmyadmin is the database manager._
 
 ### License
 
-*{Determine the license under which this application can be used.  See below for more details on licensing.}*
+*MIT License*
 
-Copyright (c) 2015 **_{List of contributors or company name}_**
+Copyright (c) 2016 **_Afton Downey_**
