@@ -5,29 +5,37 @@ li {
 .jumbotron {
   text-align: center;
   font-weight: bold;
-  background-color: #b7cbc2;
-  color: black;
+  background-color: #3c8d93;
+  color: #1f454d;
 }
 
 body {
-  background-color: #f1f2ed;
-  color: #556273;
-  font-family:'Laila', serif;
+  background-color: #d9d7ca;
+  color: #231f1f;
+  font-family:font-family: 'Nixie One', cursive;
   font-size: 15px;
 }
 
-p {
-  font-size: 25px;
+.jumbotron p {
+  font-size: 50px;
+}
+
+.jumbotron h1 {
+  font-size: 100px;
 }
 
 span {
   font-size: 20px;
 }
+.col-sm-6 {
+  padding-top: 50px;
+  text-align: center;
+}
 
 button {
-  background-color: #b7cbc2;
+  background-color: #73604f;
   font-size:10px;
-  margin-bottom: 4px;
+  color: #231f1f;
 }
 
 input {
@@ -41,8 +49,21 @@ label {
 }
 
 a {
-  color: #556273;
+  color: #231f1f;
   font-size: 25px;
+}
+
+.clear {
+  background-color: #3c8d93;
+}
+
+.home {
+  color: #3c8d93;
+}
+
+.edit {
+  font-size: 15px;
+  margin-bottom: 5px;
 }
 
 .name {

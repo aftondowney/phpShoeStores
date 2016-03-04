@@ -34,7 +34,7 @@
         return $app['twig']->render('stores.html.twig', array('stores' => Store::getAll(), 'form' => false));
     });
 
-		$app->get("/store/{id}/edit", function($id) use ($app) {
+		$app->get("/stores/{id}/edit", function($id) use ($app) {
         $store = Store::findStoreById($id);
         return $app['twig']->render('stores.html.twig', array('store' => $store, 'stores' => Store::getAll(), 'form' => true));
     });
@@ -98,7 +98,7 @@
         return $app['twig']->render('index.html.twig');
     });
 
-		
+
 
 
 		return $app;

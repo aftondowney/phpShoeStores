@@ -4,10 +4,10 @@
       <title>Brands</title>
   </head>
   <body>
-    <div class="container">
       <div class="jumbotron">
         <h1>Brands</h1>
       </div>
+      <div class="container">
       {% if brands is not empty %}
           <p>Here are all your brands:</p>
           <ul>
@@ -21,17 +21,18 @@
             <h3>There are no brands yet, add some!</h3>
       {% endif %}
 
+      <form action='/delete_brands' method='post'>
+          <button class="clear" type='submit'>Clear All</button>
+      </form>
+
       <form action='/brands' method='post'>
           <label for='name'>Brand name:</label>
           <input id='name' name='name' type='text'>
 
           <button type='submit'>Add</button>
       </form>
-      <form action='/delete_brands' method='post'>
-          <button type='submit'>Clear</button>
-      </form>
 
-        <a href='/'>Home</a>
+        <a class="home" href='/'>Home</a>
     </div>
   </body>
 </html>

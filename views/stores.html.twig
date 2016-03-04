@@ -3,11 +3,13 @@
       {% include '/includes/head.html.twig' %}
       <title>Stores</title>
   </head>
-  
-  <body>
-    <div class="container">
 
-      <h1>Stores</h1>
+  <body>
+
+      <div class="jumbotron">
+        <h1>Stores</h1>
+      </div>
+      <div class="container">
 
       {% if stores is not empty %}
           <p>Here are all your stores:</p>
@@ -15,7 +17,7 @@
               {% for store in stores %}
                 <li>
                   <a href="/store/{{ store.getId }}">{{ store.getName }}</a><br>
-                  <button><a href='/store/{{ store.getId }}/edit'>Edit</a></button>
+                  <button><a class="edit" href='/stores/{{ store.getId }}/edit'>Edit</a></button><br>
                   <form action="/store/{{ store.getId }}/delete" method="post">
                   <input name="_method" type="hidden" value="delete">
                   <button type="submit">Delete</button>
@@ -27,15 +29,17 @@
             <h3>There are no stores yet, add some!</h3>
       {% endif %}
 
+      <form action='/delete_stores' method='post'>
+          <button class="clear" type='submit'>Clear All</button>
+      </form><br>
+
       <form action='/stores' method='post'>
           <label for='name'>Store name:</label>
           <input id='name' name='name' type='text'>
 
           <button type='submit'>Add</button>
-      </form>
-      <form action='/delete_stores' method='post'>
-          <button type='submit'>Clear</button>
-      </form>
+      </form><br>
+
 
       {% if form %}
         <form action="/stores/updated" method="post">
@@ -46,7 +50,7 @@
         </form>
       {% endif %}
 
-      <p><a href='/'>Home</a></p>
+      <a class="home" href='/'>Home</a>
     </div>
   </body>
 </html>

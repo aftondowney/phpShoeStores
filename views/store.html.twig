@@ -4,23 +4,23 @@
       <title>{{ store.getName }}</title>
   </head>
   <body>
-    <div class="container">
       <div class="jumbotron">
         <h1>{{ store.getName }}</h1>
       </div>
+      <div class="container">
 
       {% if brands is not empty %}
           <p>Here are the brands for this store:</p>
           <ul>
               {% for brand in brands %}
                   <li>
-                      {{ brand.getName }}
+                      <a href="/brand/{{ brand.getId }}">{{ brand.getName }}</a><br>
                   </li>
               {% endfor %}
           </ul>
       {% endif %}
 
-      <h4>Add a brand to this store:</h4>
+      <h2>Add a brand to this store:</h2>
 
       <form action='/add_brands' method='post'>
           <input id="store_id" name="store_id" type="hidden" value="{{ store.getId }}">
@@ -33,9 +33,18 @@
           <button type='submit'>Add brand</button>
       </form>
 
-      <p><a href="/store/{{ store.getId }}/edit">Edit this store</a></p>
+      <a href="/stores">Edit this store</a>
 
-      <p><a href='/'>Home</a></p>
+      {% if form %}
+        <form action="/store/updated" method="post">
+        <input name="_method" type="hidden" value="patch">
+        <input name="current_storeId" type="hidden" value="{{ store.getId() }}">
+        <input type="text" name="name">
+        <button type="submit" name="button">Edit Name</button>
+        </form>
+      {% endif %}
+
+      <a class="home" href='/'>Home</a>
     </div>
   </body>
 </html>

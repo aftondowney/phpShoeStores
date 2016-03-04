@@ -4,10 +4,10 @@
       <title>{{ brand.getName }}</title>
   </head>
   <body>
-    <div class="container">
       <div class="jumbotron">
         <h1>{{ brand.getName }}</h1>
       </div>
+      <div class="container">
 
       {% if stores is not empty %}
           <p>Here are the stores for this brand:</p>
@@ -33,7 +33,7 @@
           <button type='submit'>Add store</button>
       </form>
 
-      <a href='/'>Home</a>
+      <a class="home" href='/'>Home</a>
     </div>
   </body>
 </html>
