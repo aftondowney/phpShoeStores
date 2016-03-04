@@ -97,5 +97,30 @@
             $this->assertEquals($test_brand, $result);
         }
 
+        function testAddStore()
+        {
+            //Arrange
+            $name = "Shoe Emporium";
+            $id = null;
+            $test_store = new Store($name, $id);
+            $test_store->save();
+
+            $name = "Naturalizer";
+            $id = null;
+            $test_brand = new Brand($name, $id);
+            $test_brand->save();
+
+            $name2 = "Chinese Laundry";
+            $test_brand2= new Brand($name2, $id);
+            $test_brand2->save();
+
+            //Act
+            $test_brand->addStore($test_store);
+
+            //Assert
+            $result = $test_brand->getStore();
+            $this->assertEquals([$test_store], $result);
+        }
+
     }
 ?>
