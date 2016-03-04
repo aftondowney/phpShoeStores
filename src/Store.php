@@ -1,5 +1,5 @@
 <?php
-    Class Author
+    Class Store
     {
         private $name;
         private $id;
@@ -27,63 +27,63 @@
 
         function save()
         {
-          $GLOBALS['DB']->exec("INSERT INTO authors (name) VALUES ('{$this->getName()}');");
-          $this->id = $GLOBALS['DB']->lastInsertId();
+            $GLOBALS['DB']->exec("INSERT INTO stores (name) VALUES ('{$this->getName()}');");
+            $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
         static function getAll()
         {
-            $returned_authors = $GLOBALS['DB']->query("SELECT * FROM authors;");
-            $authors = array();
-            foreach($returned_authors as $author) {
-                $name = $author['name'];
-                $id = $author['id'];
-                $new_author = new Author($name, $id);
-                array_push($authors, $new_author);
+            $returned_stores = $GLOBALS['DB']->query("SELECT * FROM stores;");
+            $stores = array();
+            foreach($returned_stores as $store) {
+                $name = $store['name'];
+                $id = $store['id'];
+                $new_store = new Store($name, $id);
+                array_push($stores, $new_store);
             }
-            return $authors;
+            return $stores;
         }
 
         static function deleteAll()
         {
-            $GLOBALS['DB']->exec("DELETE FROM authors;");
+            $GLOBALS['DB']->exec("DELETE FROM stores;");
         }
 
-        function deleteAuthor()
+        function deleteStore()
         {
-            $GLOBALS['DB']->exec("DELETE FROM authors WHERE id = {$this->getId()};");
+            $GLOBALS['DB']->exec("DELETE FROM stores WHERE id = {$this->getId()};");
         }
 
-         static function findAuthor($search_id)
+         static function findStore($search_id)
         {
-            $found_author = null;
-            $authors = Author::getAll();
-            foreach($authors as $author) {
-                $author_id = $author->getId();
-                if ($author_id == $search_id) {
-                    $found_author = $author;
+            $found_store = null;
+            $stores = Store::getAll();
+            foreach($stores as $store) {
+                $store_id = $store->getId();
+                if ($store_id == $search_id) {
+                    $found_store = $store;
                 }
             }
-            return $found_author;
+            return $found_store;
         }
 
-        function updateAuthor($new_name)
+        function updateStore($new_name)
         {
-            $GLOBALS['DB']->exec("UPDATE authors SET name = '{$new_name}' WHERE id = {$this->getId()};");
+            $GLOBALS['DB']->exec("UPDATE stores SET name = '{$new_name}' WHERE id = {$this->getId()};");
             $this->setName($new_name);
         }
 
         function addBook($book)
         {
-            $GLOBALS['DB']->exec("INSERT INTO authors_books (author_id, book_id) VALUES ({$this->getId()}, {$book->getId()});");
+            $GLOBALS['DB']->exec("INSERT INTO stores_books (store_id, book_id) VALUES ({$this->getId()}, {$book->getId()});");
         }
 
         function getBook()
         {
-            $books = $GLOBALS['DB']->query("SELECT books.* FROM authors
-              JOIN authors_books ON (authors.id = authors_books.author_id)
-              JOIN books ON (books.id = authors_books.book_id)
-              WHERE authors.id = {$this->getId()};");
+            $books = $GLOBALS['DB']->query("SELECT books.* FROM stores
+              JOIN stores_books ON (stores.id = stores_books.store_id)
+              JOIN books ON (books.id = stores_books.book_id)
+              WHERE stores.id = {$this->getId()};");
 
             $returned_books = [];
             foreach($books as $book) {
