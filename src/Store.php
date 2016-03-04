@@ -49,51 +49,51 @@
             $GLOBALS['DB']->exec("DELETE FROM stores;");
         }
 
-        function deleteStore()
-        {
-            $GLOBALS['DB']->exec("DELETE FROM stores WHERE id = {$this->getId()};");
-        }
-
-         static function findStore($search_id)
-        {
-            $found_store = null;
-            $stores = Store::getAll();
-            foreach($stores as $store) {
-                $store_id = $store->getId();
-                if ($store_id == $search_id) {
-                    $found_store = $store;
-                }
-            }
-            return $found_store;
-        }
-
-        function updateStore($new_name)
-        {
-            $GLOBALS['DB']->exec("UPDATE stores SET name = '{$new_name}' WHERE id = {$this->getId()};");
-            $this->setName($new_name);
-        }
-
-        function addBook($book)
-        {
-            $GLOBALS['DB']->exec("INSERT INTO stores_books (store_id, book_id) VALUES ({$this->getId()}, {$book->getId()});");
-        }
-
-        function getBook()
-        {
-            $books = $GLOBALS['DB']->query("SELECT books.* FROM stores
-              JOIN stores_books ON (stores.id = stores_books.store_id)
-              JOIN books ON (books.id = stores_books.book_id)
-              WHERE stores.id = {$this->getId()};");
-
-            $returned_books = [];
-            foreach($books as $book) {
-                $title = $book['title'];
-                $id = $book['id'];
-                $new_book = new Book($title, $id);
-                array_push($returned_books, $new_book);
-            }
-            return $returned_books;
-        }
+        // function deleteStore()
+        // {
+        //     $GLOBALS['DB']->exec("DELETE FROM stores WHERE id = {$this->getId()};");
+        // }
+        //
+        //  static function findStore($search_id)
+        // {
+        //     $found_store = null;
+        //     $stores = Store::getAll();
+        //     foreach($stores as $store) {
+        //         $store_id = $store->getId();
+        //         if ($store_id == $search_id) {
+        //             $found_store = $store;
+        //         }
+        //     }
+        //     return $found_store;
+        // }
+        //
+        // function updateStore($new_name)
+        // {
+        //     $GLOBALS['DB']->exec("UPDATE stores SET name = '{$new_name}' WHERE id = {$this->getId()};");
+        //     $this->setName($new_name);
+        // }
+        //
+        // function addBook($book)
+        // {
+        //     $GLOBALS['DB']->exec("INSERT INTO stores_books (store_id, book_id) VALUES ({$this->getId()}, {$book->getId()});");
+        // }
+        //
+        // function getBook()
+        // {
+        //     $books = $GLOBALS['DB']->query("SELECT books.* FROM stores
+        //       JOIN stores_books ON (stores.id = stores_books.store_id)
+        //       JOIN books ON (books.id = stores_books.book_id)
+        //       WHERE stores.id = {$this->getId()};");
+        //
+        //     $returned_books = [];
+        //     foreach($books as $book) {
+        //         $title = $book['title'];
+        //         $id = $book['id'];
+        //         $new_book = new Book($title, $id);
+        //         array_push($returned_books, $new_book);
+        //     }
+        //     return $returned_books;
+        // }
 
 
 
