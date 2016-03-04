@@ -125,7 +125,7 @@
             $test_store = new Store($name, $id);
             $test_store->save();
 
-            $new_name = "Emporium of Shoes"
+            $new_name = "Emporium of Shoes";
 
 
             //Act
@@ -133,7 +133,7 @@
 
             //Assert
             $result = $test_store->getName();
-            $this->assertEquals($test_store, $result);
+            $this->assertEquals("Emporium of Shoes", $result);
         }
 
     }

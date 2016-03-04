@@ -67,12 +67,12 @@
             return $found_store;
         }
 
-        // function updateStore($new_name)
-        // {
-        //     $GLOBALS['DB']->exec("UPDATE stores SET name = '{$new_name}' WHERE id = {$this->getId()};");
-        //     $this->setName($new_name);
-        // }
-        //
+        function updateStore($new_name)
+        {
+            $GLOBALS['DB']->exec("UPDATE stores SET name = '{$new_name}' WHERE id = {$this->getId()};");
+            $this->setName($new_name);
+        }
+
         // function addBook($book)
         // {
         //     $GLOBALS['DB']->exec("INSERT INTO stores_books (store_id, book_id) VALUES ({$this->getId()}, {$book->getId()});");
