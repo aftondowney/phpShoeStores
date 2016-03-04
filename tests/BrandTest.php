@@ -118,8 +118,33 @@
             $test_brand->addStore($test_store);
 
             //Assert
-            $result = $test_brand->getStore();
+            $result = $test_brand->getStores();
             $this->assertEquals([$test_store], $result);
+        }
+
+        function testGetStores()
+        {
+            //Arrange
+            $name = "Shoe Emporium";
+            $id = null;
+            $test_store = new Store($name, $id);
+            $test_store->save();
+
+            $name2 = "Shoes for All";
+            $test_store2 = new Store($name2, $id);
+            $test_store2->save();
+
+            $name = "Chinese Laundry";
+            $test_brand= new Brand($name, $id);
+            $test_brand->save();
+
+            //Act
+            $test_brand->addStore($test_store);
+            $test_brand->addStore($test_store2);
+
+            //Assert
+            $result = $test_brand->getStores();
+            $this->assertEquals([$test_store, $test_store2], $result);
         }
 
     }
