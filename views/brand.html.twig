@@ -1,0 +1,39 @@
+<html>
+  <head>
+      {% include '/includes/head.html.twig' %}
+      <title>{{ brand.getName }}</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="jumbotron">
+        <h1>{{ brand.getName }}</h1>
+      </div>
+
+      {% if stores is not empty %}
+          <p>Here are the stores for this brand:</p>
+          <ul>
+              {% for store in stores %}
+                  <li>
+                    <a href="/store/{{ store.getId }}">{{ store.getName }}</a><br>
+                  </li>
+              {% endfor %}
+          </ul>
+      {% endif %}
+
+      <h2>Add a Store to this Brand:</h2>
+
+      <form action='/add_stores' method='post'>
+          <input id="brand_id" name="brand_id" type="hidden" value="{{ brand.getId }}">
+          <label for="store_id">Select a store</label>
+          <select id='store_id' name='store_id' type='text'>
+            {% for store in all_stores %}
+              <option value="{{ store.getId }}"> {{ store.getName }} </option>
+            {% endfor %}
+          </select>
+          <button type='submit'>Add store</button>
+      </form>
+
+      <a href='/'>Home</a>
+    </div>
+  </body>
+</html>
