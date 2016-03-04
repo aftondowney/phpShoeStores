@@ -39,11 +39,18 @@
         return $app['twig']->render('stores.html.twig', array('store' => $store, 'stores' => Store::getAll(), 'form' => true));
     });
 
-		$app->patch("/authors/updated", function() use ($app) {
-        $author_to_edit = Author::findAuthor($_POST['current_authorId']);
-        $author_to_edit->updateAuthor($_POST['name']);
-        return $app['twig']->render('authors.html.twig', array('author' => $author_to_edit, 'authors' => Author::getAll(), 'form' => false));
+		$app->patch("/stores/updated", function() use ($app) {
+        $store_to_edit = Store::findStoreById($_POST['current_storeId']);
+        $store_to_edit->updateStore($_POST['name']);
+        return $app['twig']->render('stores.html.twig', array('store' => $store_to_edit, 'stores' => Store::getAll(), 'form' => false));
     });
+
+		$app->delete('/store/{id}/delete', function($id) use ($app) {
+        $store = Store::findStoreById($id);
+        $store->deleteStore();
+        return $app['twig']->render('stores.html.twig', array('store' => $store, 'stores' => Store::getAll(), 'form' => false));
+    });
+
 
 
 		return $app;
