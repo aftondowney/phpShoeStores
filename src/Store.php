@@ -49,11 +49,11 @@
             $GLOBALS['DB']->exec("DELETE FROM stores;");
         }
 
-        // function deleteStore()
-        // {
-        //     $GLOBALS['DB']->exec("DELETE FROM stores WHERE id = {$this->getId()};");
-        // }
-        //
+        function deleteStore()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM stores WHERE id = {$this->getId()};");
+        }
+        
         //  static function findStore($search_id)
         // {
         //     $found_store = null;
