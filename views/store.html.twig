@@ -1,36 +1,41 @@
 <html>
-<head>
-    <title>{{ store.getName }}</title>
-</head>
-<body>
-    <h1>{{ store.getName }}</h1>
+  <head>
+      {% include '/includes/head.html.twig' %}
+      <title>{{ store.getName }}</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="jumbotron">
+        <h1>{{ store.getName }}</h1>
+      </div>
 
-    {% if brands is not empty %}
-        <p>Here are the brands for this store:</p>
-        <ul>
-            {% for brand in brands %}
-                <li>
-                    {{ brand.getName }}
-                </li>
+      {% if brands is not empty %}
+          <p>Here are the brands for this store:</p>
+          <ul>
+              {% for brand in brands %}
+                  <li>
+                      {{ brand.getName }}
+                  </li>
+              {% endfor %}
+          </ul>
+      {% endif %}
+
+      <h4>Add a brand to this store:</h4>
+
+      <form action='/add_brands' method='post'>
+          <input id="store_id" name="store_id" type="hidden" value="{{ store.getId }}">
+          <label for="brand_id">Select a brand</label>
+          <select id='brand_id' name='brand_id' type='text'>
+            {% for brand in all_brands %}
+              <option value="{{ brand.getId }}"> {{ brand.getName }} </option>
             {% endfor %}
-        </ul>
-    {% endif %}
+          </select>
+          <button type='submit'>Add brand</button>
+      </form>
 
-    <h4>Add a brand to this store:</h4>
+      <p><a href="/store/{{ store.getId }}/edit">Edit this store</a></p>
 
-    <form action='/add_brands' method='post'>
-        <input id="store_id" name="store_id" type="hidden" value="{{ store.getId }}">
-        <label for="brand_id">Select a brand</label>
-        <select id='brand_id' name='brand_id' type='text'>
-          {% for brand in all_brands %}
-            <option value="{{ brand.getId }}"> {{ brand.getName }} </option>
-          {% endfor %}
-        </select>
-        <button type='submit'>Add brand</button>
-    </form>
-
-    <p><a href="/store/{{ store.getId }}/edit">Edit this store</a></p>
-
-    <p><a href='/'>Home</a></p>
-</body>
+      <p><a href='/'>Home</a></p>
+    </div>
+  </body>
 </html>
